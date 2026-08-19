@@ -1,0 +1,196 @@
+{
+  "info": {
+    "name": "QuickOrder API V3.1",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:5000/api"
+    },
+    {
+      "key": "apiKey",
+      "value": "quickorder-demo-key"
+    },
+    {
+      "key": "restaurantId",
+      "value": "1"
+    },
+    {
+      "key": "productId",
+      "value": "1"
+    },
+    {
+      "key": "orderId",
+      "value": "1"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/health"
+      }
+    },
+    {
+      "name": "Restaurants",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/restaurants",
+        "header": [
+          {
+            "key": "X-API-Key",
+            "value": "{{apiKey}}"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Search restaurants",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/restaurants?q=pizza&min_rating=4",
+        "header": [
+          {
+            "key": "X-API-Key",
+            "value": "{{apiKey}}"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Restaurant products",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/restaurants/{{restaurantId}}/products",
+        "header": [
+          {
+            "key": "X-API-Key",
+            "value": "{{apiKey}}"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Vegetarian products",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/restaurants/{{restaurantId}}/products?vegetarian=true",
+        "header": [
+          {
+            "key": "X-API-Key",
+            "value": "{{apiKey}}"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Product detail",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/products/{{productId}}",
+        "header": [
+          {
+            "key": "X-API-Key",
+            "value": "{{apiKey}}"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Validate coupon",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-API-Key",
+            "value": "{{apiKey}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"code\": \"WELCOME10\",\n  \"subtotal\": 32.50\n}"
+        },
+        "url": "{{baseUrl}}/coupons/validate"
+      }
+    },
+    {
+      "name": "My orders",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/orders",
+        "header": [
+          {
+            "key": "X-API-Key",
+            "value": "{{apiKey}}"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Create order",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-API-Key",
+            "value": "{{apiKey}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"items\": [{\"product_id\": 1, \"quantity\": 1}],\n  \"coupon\": \"WELCOME10\",\n  \"payment_method\": \"card\"\n}"
+        },
+        "url": "{{baseUrl}}/orders"
+      }
+    },
+    {
+      "name": "Order detail",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/orders/{{orderId}}",
+        "header": [
+          {
+            "key": "X-API-Key",
+            "value": "{{apiKey}}"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Cancel order",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/orders/{{orderId}}/cancel",
+        "header": [
+          {
+            "key": "X-API-Key",
+            "value": "{{apiKey}}"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Favorites",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/favorites",
+        "header": [
+          {
+            "key": "X-API-Key",
+            "value": "{{apiKey}}"
+          }
+        ]
+      }
+    }
+  ]
+}

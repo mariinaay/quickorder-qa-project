@@ -1,0 +1,169 @@
+openapi: 3.0.3
+info:
+  title: QuickOrder API
+  version: 3.1.0
+  description: |
+    API REST pédagogique de QuickOrder.
+
+    Pour tester l'API avec Swagger UI : cliquez sur Authorize et utilisez la clé
+    de démonstration indiquée dans docs/API.md et docs/INSTALLATION.md.
+servers:
+  - url: http://127.0.0.1:5000/api
+    description: Local
+security:
+  - apiKey: []
+paths:
+  /health:
+    get:
+      summary: Vérifier la disponibilité de l'API
+      security: []
+      tags: [System]
+      responses:
+        '200': {description: OK}
+  /restaurants:
+    get:
+      summary: Rechercher des restaurants
+      tags: [Restaurants]
+      parameters:
+        - {name: q, in: query, schema: {type: string}}
+        - {name: category, in: query, schema: {type: string}}
+        - {name: min_rating, in: query, schema: {type: number, format: float}}
+      responses:
+        '200': {description: Liste des restaurants}
+        '401': {description: API key manquante ou invalide}
+  /restaurants/{restaurant_id}:
+    get:
+      summary: Détail d'un restaurant
+      tags: [Restaurants]
+      parameters: [{name: restaurant_id, in: path, required: true, schema: {type: integer}}]
+      responses:
+        '200': {description: Restaurant trouvé}
+        '401': {description: API key manquante ou invalide}
+        '404': {description: Restaurant introuvable}
+  /restaurants/{restaurant_id}/products:
+    get:
+      summary: Produits d'un restaurant
+      tags: [Products]
+      parameters:
+        - {name: restaurant_id, in: path, required: true, schema: {type: integer}}
+        - {name: category, in: query, schema: {type: string}}
+        - {name: vegetarian, in: query, schema: {type: boolean}}
+      responses:
+        '200': {description: Liste des produits}
+        '401': {description: API key manquante ou invalide}
+  /products/{product_id}:
+    get:
+      summary: Détail d'un produit
+      tags: [Products]
+      parameters: [{name: product_id, in: path, required: true, schema: {type: integer}}]
+      responses:
+        '200': {description: Produit trouvé}
+        '401': {description: API key manquante ou invalide}
+  /coupons/validate:
+    post:
+      summary: Valider un coupon
+      tags: [Coupons]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {$ref: '#/components/schemas/CouponValidation'}
+            example: {code: WELCOME10, subtotal: 32.50}
+      responses:
+        '200': {description: Coupon traité}
+        '401': {description: API key manquante ou invalide}
+        '404': {description: Coupon inexistant ou expiré}
+  /orders:
+    get:
+      summary: Lister les commandes du compte de démonstration
+      tags: [Orders]
+      parameters: [{name: status, in: query, schema: {type: string}}]
+      responses:
+        '200': {description: Commandes}
+        '401': {description: API key manquante ou invalide}
+    post:
+      summary: Créer une commande
+      tags: [Orders]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {$ref: '#/components/schemas/CreateOrderRequest'}
+            example:
+              items:
+                - {product_id: 1, quantity: 1}
+              payment_method: card
+      responses:
+        '201': {description: Commande créée}
+        '400': {description: Requête invalide}
+        '401': {description: API key manquante ou invalide}
+        '409': {description: Produit indisponible}
+  /orders/{order_id}:
+    get:
+      summary: Détail d'une commande
+      tags: [Orders]
+      parameters: [{name: order_id, in: path, required: true, schema: {type: integer}}]
+      responses:
+        '200': {description: Commande}
+        '401': {description: API key manquante ou invalide}
+        '403': {description: Accès interdit}
+  /orders/{order_id}/cancel:
+    post:
+      summary: Annuler une commande
+      tags: [Orders]
+      parameters: [{name: order_id, in: path, required: true, schema: {type: integer}}]
+      responses:
+        '200': {description: Commande annulée}
+        '401': {description: API key manquante ou invalide}
+        '409': {description: Annulation impossible}
+  /favorites:
+    get:
+      summary: Lister les restaurants favoris
+      tags: [Users]
+      responses:
+        '200': {description: Favoris}
+        '401': {description: API key manquante ou invalide}
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: "Clé de démonstration : quickorder-demo-key"
+  schemas:
+    Restaurant:
+      type: object
+      properties:
+        id: {type: integer}
+        name: {type: string}
+        description: {type: string}
+        promo_text: {type: string}
+        category: {type: string}
+        address: {type: string}
+        delivery_fee: {type: number, format: float}
+        minimum_order: {type: number, format: float}
+        delivery_time_min: {type: integer}
+        rating: {type: number, format: float}
+        is_open: {type: boolean}
+    CreateOrderRequest:
+      type: object
+      required: [items]
+      properties:
+        items:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required: [product_id, quantity]
+            properties:
+              product_id: {type: integer, example: 1}
+              quantity: {type: integer, minimum: 1, maximum: 20, example: 2}
+        coupon: {type: string, example: WELCOME10}
+        payment_method: {type: string, enum: [card, paypal, cash]}
+        cash_received: {type: number, example: 20}
+    CouponValidation:
+      type: object
+      required: [code, subtotal]
+      properties:
+        code: {type: string}
+        subtotal: {type: number, minimum: 0}

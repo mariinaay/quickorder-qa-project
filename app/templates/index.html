@@ -1,0 +1,14 @@
+{% extends 'base.html' %}{% block title %}Restaurants · QuickOrder{% endblock %}
+{% block content %}
+<section class="hero"><div><p class="eyebrow">Plateforme de livraison</p><h1>Commandez simplement.</h1><p>Restaurants, menus, coupons, paiement simulé et suivi de commande.</p></div></section>
+<form class="filters" method="get">
+<input name="q" value="{{ q }}" placeholder="Rechercher un restaurant...">
+<select name="category"><option value="">Toutes les catégories</option>{% for c in categories %}<option value="{{ c }}" {% if category==c %}selected{% endif %}>{{ c }}</option>{% endfor %}</select>
+<select name="sort"><option value="rating" {% if sort=='rating' %}selected{% endif %}>Mieux notés</option><option value="price" {% if sort=='price' %}selected{% endif %}>Livraison moins chère</option><option value="time" {% if sort=='time' %}selected{% endif %}>Plus rapide</option></select>
+<select name="max_delivery"><option value="">Livraison max</option><option value="2.00" {% if max_delivery==2.0 %}selected{% endif %}>≤ 2,00 €</option><option value="2.50" {% if max_delivery==2.5 %}selected{% endif %}>≤ 2,50 €</option><option value="3.00" {% if max_delivery==3.0 %}selected{% endif %}>≤ 3,00 €</option></select>
+<label class="check"><input type="checkbox" name="vegetarian" value="1" {% if vegetarian %}checked{% endif %}> Végétarien</label><button class="button">Rechercher</button></form>
+<div class="grid">{% for r in restaurants %}<article class="card">
+<div class="row-between"><span class="tag">{{ r.category }}</span><span class="status {{ 'confirmed' if r.is_open else 'cancelled' }}">{{ 'OUVERT' if r.is_open else 'FERMÉ' }}</span></div>
+<h2>{{ r.name }}</h2><p>{{ r.description }}</p>{% if r.promo_text %}<p class="flash warning">🎟️ {{ r.promo_text }}</p>{% endif %}<p class="muted">⭐ {{ '%.1f'|format(r.rating) }} · {{ r.delivery_time_min }} min · Livraison {{ '%.2f'|format(r.delivery_fee) }} € · Minimum {{ '%.2f'|format(r.minimum_order) }} €</p>
+<a class="button" href="{{ url_for('main.restaurant', restaurant_id=r.id) }}">Voir le menu</a></article>{% else %}<p>Aucun restaurant trouvé.</p>{% endfor %}</div>
+{% endblock %}

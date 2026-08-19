@@ -1,0 +1,15 @@
+services:
+  quickorder:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      SECRET_KEY: quickorder-docker-secret
+      DATABASE_URL: sqlite:////data/quickorder.db
+      FLASK_DEBUG: "0"
+    volumes:
+      - quickorder_data:/data
+    command: ["./docker-entrypoint.sh"]
+
+volumes:
+  quickorder_data:
