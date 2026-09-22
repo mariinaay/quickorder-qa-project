@@ -1,0 +1,8 @@
+![Produit hors stock ajoutable au panier](/docs/images/bug1.png)
+![Dépassement du stock disponible accepté](/docs/images/bug2.png)
+![Quantité excessive acceptée sans plafonnement](/docs/images/bug3.png)
+![Commande validée sous le minimum requis](/docs/images/bug4.png)
+![Commande acceptée sur un restaurant fermé](/docs/images/bug5.png)
+![Absence de photos et de fiche produit détaillée](/docs/images/bug6.png)
+![Favoris](/docs/images/bug7.png)
+![Barre de filtrage ](/docs/images/bug8.png)

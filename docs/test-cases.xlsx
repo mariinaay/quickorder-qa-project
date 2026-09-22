@@ -1,0 +1,549 @@
+# Cas nominaux
+
+ 1. Connexion avec identifiants valides
+
+| Champ                | Contenu                                                                                                             |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| **ID**               | TC-LOGIN-001                                                                                                        |
+| ---                  | ---                                                                                                                 |
+| **Titre**            | Connexion réussie avec identifiants valides                                                                         |
+| ---                  | ---                                                                                                                 |
+| **Objectif**         | Vérifier qu'un utilisateur enregistré peut se connecter à son compte                                                |
+| ---                  | ---                                                                                                                 |
+| **Préconditions**    | Le compte `alice@example.com` existe et l'utilisateur est déconnecté                                                |
+| ---                  | ---                                                                                                                 |
+| **Données de test**  | Email : `alice@example.com` Mot de passe : `Password123!`                                                           |
+| ---                  | ---                                                                                                                 |
+| **Étapes**           | 1. Ouvrir la page de connexion2. Saisir l'email3. Saisir le mot de passe4. Cliquer sur « Se connecter »             |
+| ---                  | ---                                                                                                                 |
+| **Résultat attendu** | Redirection vers la page d'accueil                                                                                  |
+| ---                  | ---                                                                                                                 |
+| **Résultat obtenu**  | Ouverture de la page d'accueil                                                                                      |
+| ---                  | ---                                                                                                                 |
+| **Statut**           | **Pass**                                                                                                            |
+
+ 2. Création de compte avec données valides
+
+| Champ                | Contenu                                                                                                                                            |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **ID**               | TC-LOGIN-002                                                                                                                                       |
+| ---                  | ---                                                                                                                                                |
+| **Titre**            | Création réussie d'un nouveau compte utilisateur                                                                                                   |
+| ---                  | ---                                                                                                                                                |
+| **Objectif**         | Vérifier qu'un utilisateur peut créer un compte avec des données valides                                                                           |
+| ---                  | ---                                                                                                                                                |
+| **Préconditions**    | L'email utilisé n'existe pas encore dans le système                                                                                                |
+| ---                  | ---                                                                                                                                                |
+| **Données de test**  | Nom : Test User Email : `testuser01@example.com` Mot de passe : `TestPass123!`                                                                     |
+| ---                  | ---                                                                                                                                                |
+| **Étapes**           | 1. Ouvrir la page « Créer un compte »2. Saisir le nom3. Saisir l'email4. Saisir le mot de passe5. Cliquer sur « Créer mon compte »                 |
+| ---                  | ---                                                                                                                                                |
+| **Résultat attendu** | Le compte est créé et l'utilisateur est connecté                                                                                                   |
+| ---                  | ---                                                                                                                                                |
+| **Résultat obtenu**  | L'utilisateur est redirigé vers la page d'accueil avec son nom d'utilisateur affiché dans la barre du haut                                         |
+| ---                  | ---                                                                                                                                                |
+| **Statut**           | **Pass**                                                                                                                                           |
+
+ 3. Ajout d'un produit en stock au panier
+
+| Champ                | Contenu                                                                                                                            |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| **ID**               | TC-LOGIN-003                                                                                                                       |
+| ---                  | ---                                                                                                                                |
+| **Titre**            | Ajout réussi d'un produit disponible au panier                                                                                     |
+| ---                  | ---                                                                                                                                |
+| **Objectif**         | Vérifier qu'un produit en stock peut être ajouté au panier                                                                         |
+| ---                  | ---                                                                                                                                |
+| **Préconditions**    | L'utilisateur est sur la page menu d'un restaurant et un produit est en stock                                                      |
+| ---                  | ---                                                                                                                                |
+| **Données de test**  | Restaurant : Tokyo Bowl Produit : Chicken Teriyaki Quantité : 1                                                                    |
+| ---                  | ---                                                                                                                                |
+| **Étapes**           | 1. Aller sur la page menu de Tokyo Bowl2. Choisir « Chicken Teriyaki »3. Choisir la quantité4. Cliquer sur « Ajouter »             |
+| ---                  | ---                                                                                                                                |
+| **Résultat attendu** | Le produit est ajouté au panier et une confirmation visuelle apparaît                                                              |
+| ---                  | ---                                                                                                                                |
+| **Résultat obtenu**  | Le produit est ajouté au panier avec le message « Chicken Teriyaki ajouté au panier »                                              |
+| ---                  | ---                                                                                                                                |
+| **Statut**           | **Pass**                                                                                                                           |
+
+ 4. Consultation de la liste des restaurants
+
+| Champ                | Contenu                                                                                                                                                                                         |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **ID**               | TC-LOGIN-004                                                                                                                                                                                    |
+| ---                  | ---                                                                                                                                                                                             |
+| **Titre**            | Filtrage correct de la liste des restaurants par catégorie                                                                                                                                      |
+| ---                  | ---                                                                                                                                                                                             |
+| **Objectif**         | Vérifier que les filtres de la page d'accueil affinent correctement la liste des restaurants affichés                                                                                           |
+| ---                  | ---                                                                                                                                                                                             |
+| **Préconditions**    | Aucune                                                                                                                                                                                          |
+| ---                  | ---                                                                                                                                                                                             |
+| **Données de test**  | Filtre catégorie : Japonais                                                                                                                                                                     |
+| ---                  | ---                                                                                                                                                                                             |
+| **Étapes**           | 1. Aller sur la page d'accueil « Restaurants »2. Ouvrir le menu « Toutes les catégories »3. Sélectionner « Japonais »4. Cliquer sur « Rechercher »5. Observer la liste affichée                 |
+| ---                  | ---                                                                                                                                                                                             |
+| **Résultat attendu** | Seuls les restaurants de la catégorie « Japonais » restent affichés                                                                                                                             |
+| ---                  | ---                                                                                                                                                                                             |
+| **Résultat obtenu**  | Seuls les restaurants de la catégorie sélectionnée sont affichés et les autres disparaissent                                                                                                    |
+| ---                  | ---                                                                                                                                                                                             |
+| **Statut**           | **Pass**                                                                                                                                                                                        |
+
+ 5. Passage d'une commande complète
+
+| Champ                | Contenu                                                                                                                                                                                                                                |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **ID**               | TC-LOGIN-005                                                                                                                                                                                                                           |
+| ---                  | ---                                                                                                                                                                                                                                    |
+| **Titre**            | Commande complète réussie                                                                                                                                                                                                              |
+| ---                  | ---                                                                                                                                                                                                                                    |
+| **Objectif**         | Vérifier qu'un utilisateur connecté peut ajouter un produit, accéder au panier et valider sa commande                                                                                                                                  |
+| ---                  | ---                                                                                                                                                                                                                                    |
+| **Préconditions**    | L'utilisateur est connecté et un produit en stock est disponible                                                                                                                                                                       |
+| ---                  | ---                                                                                                                                                                                                                                    |
+| **Données de test**  | Produit : Chicken Teriyaki Quantité : 1                                                                                                                                                                                                |
+| ---                  | ---                                                                                                                                                                                                                                    |
+| **Étapes**           | 1. Ajouter le produit au panier2. Aller sur la page « Panier »3. Vérifier le contenu et le total4. Vérifier que l'utilisateur est connecté5. Cliquer sur le bouton pour passer la commande6. Confirmer la commande                     |
+| ---                  | ---                                                                                                                                                                                                                                    |
+| **Résultat attendu** | La commande est validée, un message de confirmation est affiché et le panier est vidé                                                                                                                                                  |
+| ---                  | ---                                                                                                                                                                                                                                    |
+| **Résultat obtenu**  | La commande est validée avec un message confirmant que la commande est passée et le panier est vide                                                                                                                                    |
+| ---                  | ---                                                                                                                                                                                                                                    |
+| **Statut**           | **Pass**                                                                                                                                                                                                                               |
+
+ 6. Consultation du menu d'un restaurant
+
+| Champ                | Contenu                                                                                                                                                                                    |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **ID**               | TC-LOGIN-006                                                                                                                                                                               |
+| ---                  | ---                                                                                                                                                                                        |
+| **Titre**            | Affichage correct du menu d'un restaurant sélectionné                                                                                                                                      |
+| ---                  | ---                                                                                                                                                                                        |
+| **Objectif**         | Vérifier que cliquer sur un restaurant affiche correctement son menu et ses produits                                                                                                       |
+| ---                  | ---                                                                                                                                                                                        |
+| **Préconditions**    | Le restaurant existe et est cliquable depuis la liste                                                                                                                                      |
+| ---                  | ---                                                                                                                                                                                        |
+| **Données de test**  | Restaurant : Tokyo Bowl                                                                                                                                                                    |
+| ---                  | ---                                                                                                                                                                                        |
+| **Étapes**           | 1. Depuis l'accueil, cliquer sur « Voir le menu » pour Tokyo Bowl2. Observer la page affichée                                                                                              |
+| ---                  | ---                                                                                                                                                                                        |
+| **Résultat attendu** | La page affiche le nom du restaurant, sa description et la liste des produits avec leur prix, leur stock et leur photo                                                                     |
+| ---                  | ---                                                                                                                                                                                        |
+| **Résultat obtenu**  | Le nom du restaurant et les produits proposés sont affichés avec une mini-description, mais il est impossible d'accéder à la fiche détaillée d'un produit et aucune photo n'est disponible |
+| ---                  | ---                                                                                                                                                                                        |
+| **Statut**           | **Fail**                                                                                                                                                                                   |
+
+# Cas d'erreurs
+
+ 1. Favoris
+
+| Champ                | Contenu                                                                                                                              |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| **ID**               | TC-LOGIN-007                                                                                                                         |
+| ---                  | ---                                                                                                                                  |
+| **Titre**            | Ajout d'un restaurant aux favoris                                                                                                    |
+| ---                  | ---                                                                                                                                  |
+| **Objectif**         | Vérifier qu'un utilisateur peut ajouter un restaurant à ses favoris et le retrouver dans la page « Favoris »                         |
+| ---                  | ---                                                                                                                                  |
+| **Préconditions**    | L'utilisateur est connecté et un restaurant est disponible dans la liste                                                             |
+| ---                  | ---                                                                                                                                  |
+| **Données de test**  | Restaurant : Tokyo Bowl                                                                                                              | 
+| ---                  | ---                                                                                                                                  |
+| **Étapes**           | 1. Se connecter 2. Aller sur la liste des restaurants 3. Sélectionner « Tokyo Bowl » 4. Rechercher une option permettant d'ajouter le restaurant aux favoris 5. Ajouter le restaurant aux favoris 6. Ouvrir la page « Favoris » depuis le profil|
+| ---                  | ---                                                                                                                                  |
+| **Résultat attendu** | Le restaurant est ajouté aux favoris et apparaît dans la page « Favoris »                                                            |
+| ---                  | ---                                                                                                                                  |
+| **Résultat obtenu**  | Il est impossible d'ajouter le restaurant aux favoris et aucun élément ne peut être ajouté à la page « Favoris »                     |
+| ---                  | ---                                                                                                                                  |
+| **Statut**           | **Fail**                                                                                                                             |
+| ---                  | ---                                                                                                                                  |
+| **Principal risque** | La fonctionnalité « Favoris » est inutilisable et ne permet pas à l'utilisateur de retrouver rapidement ses restaurants préférés     |
+
+ 2. Création de compte avec un email déjà utilisé
+
+| Champ                | Contenu                                                                                                                                                         |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **ID**               | TC-LOGIN-008                                                                                                                                                    |
+| ---                  | ---                                                                                                                                                             |
+| **Titre**            | Refus de création de compte avec un email déjà existant                                                                                                         |
+| ---                  | ---                                                                                                                                                             |
+| **Objectif**         | Vérifier que le système empêche la création d'un compte avec un email déjà enregistré                                                                           |
+| ---                  | ---                                                                                                                                                             |
+| **Préconditions**    | Le compte `alice@example.com` existe déjà                                                                                                                       |
+| ---                  | ---                                                                                                                                                             |
+| **Données de test**  | Nom : Alice Bis Email : `alice@example.com` Mot de passe : `Nouveau123!`                                                                                        |
+| ---                  | ---                                                                                                                                                             |
+| **Étapes**           | 1. Ouvrir la page « Créer un compte »2. Saisir un nom3. Saisir l'email déjà utilisé4. Saisir un mot de passe5. Cliquer sur « Créer mon compte »                 |
+| ---                  | ---                                                                                                                                                             |
+| **Résultat attendu** | Un message d'erreur indique que l'email est déjà utilisé et aucun compte n'est créé                                                                             |
+| ---                  | ---                                                                                                                                                             |
+| **Résultat obtenu**  | Le message « Un compte existe déjà avec cet email » apparaît et aucun compte n'est créé                                                                         |
+| ---                  | ---                                                                                                                                                             |
+| **Statut**           | **Pass**                                                                                                                                                        |
+
+ 3. Création de compte avec des champs vides
+
+| Champ                | Contenu                                                                                                          |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| **ID**               | TC-LOGIN-009                                                                                                     |
+| ---                  | ---                                                                                                              |
+| **Titre**            | Refus de création de compte avec des champs vides                                                                |
+| ---                  | ---                                                                                                              |
+| **Objectif**         | Vérifier que le système bloque la soumission si les champs obligatoires sont vides                               |
+| ---                  | ---                                                                                                              |
+| **Préconditions**    | L'utilisateur est sur la page « Créer un compte »                                                                |
+| ---                  | ---                                                                                                              |
+| **Données de test**  | Nom : (vide) Email : (vide) Mot de passe : (vide)                                                                |
+| ---                  | ---                                                                                                              |
+| **Étapes**           | 1. Ouvrir la page « Créer un compte »2. Laisser tous les champs vides3. Cliquer sur « Créer mon compte »         |
+| ---                  | ---                                                                                                              |
+| **Résultat attendu** | Le formulaire n'est pas soumis et un message d'erreur est affiché                                                |
+| ---                  | ---                                                                                                              |
+| **Résultat obtenu**  | Le message « Veuillez renseigner ce champ » apparaît et aucun compte n'est créé                                  |
+| ---                  | ---                                                                                                              |
+| **Statut**           | **Pass**                                                                                                         |
+
+ 4. Ajout au panier d'un produit hors stock
+
+| Champ                | Contenu                                                                                                       |
+| -------------------- | ------------------------------------------------------------------------------------------------------------- |
+| **ID**               | TC-LOGIN-010                                                                                                  |
+| ---                  | ---                                                                                                           |
+| **Titre**            | Refus d'ajout au panier d'un produit en rupture de stock                                                      |
+| ---                  | ---                                                                                                           |
+| **Objectif**         | Vérifier qu'un produit affiché « Hors stock » ne peut pas être ajouté au panier                               |
+| ---                  | ---                                                                                                           |
+| **Préconditions**    | L'utilisateur est sur la page menu de Tokyo Bowl. Le produit « Gyozas » affiche « Stock 0 » et « HORS STOCK » |
+| ---                  | ---                                                                                                           |
+| **Données de test**  | Produit : Gyozas Quantité : 1                                                                                 |
+| ---                  | ---                                                                                                           |
+| **Étapes**           | 1. Aller sur la page menu de Tokyo Bowl2. Localiser « Gyozas »3. Cliquer sur « Ajouter »                      |
+| ---                  | ---                                                                                                           |
+| **Résultat attendu** | Le bouton « Ajouter » est désactivé                                                                           |
+| ---                  | ---                                                                                                           |
+| **Résultat obtenu**  | Le bouton est activé. Le produit peut être ajouté au panier et commandé                                       |
+| ---                  | ---                                                                                                           |
+| **Statut**           | **Fail**                                                                                                      |
+| ---                  | ---                                                                                                           |
+| **Principal risque** | Commande d'un produit indisponible, pouvant entraîner une commande non honorée                                |
+
+ 5. Validation du checkout avec un panier vide
+
+| Champ                | Contenu                                                                                                       |
+| -------------------- | ------------------------------------------------------------------------------------------------------------- |
+| **ID**               | TC-LOGIN-011                                                                                                  |
+| ---                  | ---                                                                                                           |
+| **Titre**            | Refus de validation d'une commande avec un panier vide                                                        |
+| ---                  | ---                                                                                                           |
+| **Objectif**         | Vérifier qu'il est impossible de valider une commande lorsque le panier ne contient aucun produit             |
+| ---                  | ---                                                                                                           |
+| **Préconditions**    | L'utilisateur est connecté et le panier est vide                                                              |
+| ---                  | ---                                                                                                           |
+| **Données de test**  | Aucune                                                                                                        |
+| ---                  | ---                                                                                                           |
+| **Étapes**           | 1. Se connecter2. Aller directement sur la page « Panier »3. Chercher un moyen de valider la commande         |
+| ---                  | ---                                                                                                           |
+| **Résultat attendu** | Aucun bouton de validation n'est disponible                                                                   |
+| ---                  | ---                                                                                                           |
+| **Résultat obtenu**  | Aucun bouton permettant de valider la commande n'est présent                                                  |
+| ---                  | ---                                                                                                           |
+| **Statut**           | **Pass**                                                                                                      |
+
+ 6. Ajout d'une quantité invalide au panier
+
+| Champ                | Contenu                                                                                                                            |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| **ID**               | TC-LOGIN-012                                                                                                                       |
+| ---                  | ---                                                                                                                                |
+| **Titre**            | Refus d'ajout au panier avec une quantité invalide                                                                                 |
+| ---                  | ---                                                                                                                                |
+| **Objectif**         | Vérifier que le système empêche l'ajout d'un produit avec une quantité nulle ou négative                                           |
+| ---                  | ---                                                                                                                                |
+| **Préconditions**    | L'utilisateur est sur la page menu de Tokyo Bowl. Le produit « Chicken Teriyaki » est en stock                                     |
+| ---                  | ---                                                                                                                                |
+| **Données de test**  | Produit : Chicken Teriyaki Quantité : 0                                                                                            |
+| ---                  | ---                                                                                                                                |
+| **Étapes**           | 1. Aller sur la page menu de Tokyo Bowl2. Modifier le champ quantité de « Chicken Teriyaki » à 0 3. Cliquer sur « Ajouter »        |
+| ---                  | ---                                                                                                                                |
+| **Résultat attendu** | Aucun produit avec une quantité de 0 ne peut être ajouté au panier                                                                 |
+| ---                  | ---                                                                                                                                |
+| **Résultat obtenu**  | Aucun produit ne peut avoir une quantité de 0 : la quantité commence par défaut à 1                                                |
+| ---                  | ---                                                                                                                                |
+| **Statut**           | **Pass**                                                                                                                           |
+
+# Cas limites
+
+ 1. Création de compte avec mot de passe à la longueur minimale
+
+| Champ                | Contenu                                                                                                                                                  |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **ID**               | TC-LOGIN-013                                                                                                                                             |
+| ---                  | ---                                                                                                                                                      |
+| **Titre**            | Création de compte acceptée avec un mot de passe à la longueur minimale autorisée                                                                        |
+| ---                  | ---                                                                                                                                                      |
+| **Objectif**         | Vérifier que le système accepte un mot de passe exactement à la taille minimale exigée                                                                   |
+| ---                  | ---                                                                                                                                                      |
+| **Préconditions**    | L'utilisateur est sur la page « Créer un compte » ; aucune règle de longueur minimale n'est affichée explicitement                                       |
+| ---                  | ---                                                                                                                                                      |
+| **Données de test**  | Nom : Test Limite Email : `testlimite@example.com` Mot de passe : `Abcd123!` (8 caractères)                                                              |
+| ---                  | ---                                                                                                                                                      |
+| **Étapes**           | 1. Ouvrir la page « Créer un compte »2. Saisir le nom et l'email3. Saisir un mot de passe de 8 caractères4. Cliquer sur « Créer mon compte »             |
+| ---                  | ---                                                                                                                                                      |
+| **Résultat attendu** | Le compte est créé si 8 caractères respectent la règle minimale du système                                                                               |
+| ---                  | ---                                                                                                                                                      |
+| **Résultat obtenu**  | Le compte est bien créé                                                                                                                                  |
+| ---                  | ---                                                                                                                                                      |
+| **Statut**           | **Pass**                                                                                                                                                 |
+
+ 2. Ajout de la quantité minimale autorisée
+
+| Champ                | Contenu                                                                                                              |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| **ID**               | TC-LOGIN-014                                                                                                         |
+| ---                  | ---                                                                                                                  |
+| **Titre**            | Ajout au panier avec la quantité minimale autorisée (1)                                                              |
+| ---                  | ---                                                                                                                  |
+| **Objectif**         | Vérifier que le système accepte l'ajout d'un produit avec la plus petite quantité valide possible                    |
+| ---                  | ---                                                                                                                  |
+| **Préconditions**    | Le produit « Tofu Bowl » est en stock                                                                                |
+| ---                  | ---                                                                                                                  |
+| **Données de test**  | Produit : Tofu Bowl / Quantité : 1                                                                                   |
+| ---                  | ---                                                                                                                  |
+| **Étapes**           | 1. Aller sur la page menu de Tokyo Bowl2. Laisser la quantité de « Tofu Bowl » à 1 3. Cliquer sur « Ajouter »        |
+| ---                  | ---                                                                                                                  |
+| **Résultat attendu** | Le produit est ajouté au panier avec une quantité de 1                                                               |
+| ---                  | ---                                                                                                                  |
+| **Résultat obtenu**  | Le produit est bien mis au panier                                                                                    |
+| ---                  | ---                                                                                                                  |
+| **Statut**           | **Pass**                                                                                                             |
+
+ 3. Ajout d'une quantité égale au stock restant exact
+
+| Champ                | Contenu                                                                                                                 |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| **ID**               | TC-LOGIN-015                                                                                                            |
+| ---                  | ---                                                                                                                     |
+| **Titre**            | Ajout au panier d'une quantité égale au stock disponible                                                                |
+| ---                  | ---                                                                                                                     |
+| **Objectif**         | Vérifier que le système accepte l'ajout lorsque la quantité demandée est exactement égale au stock restant              |
+| ---                  | ---                                                                                                                     |
+| **Préconditions**    | Le produit « Salmon Bowl » affiche un stock de 2 sur la page Tokyo Bowl                                                 |
+| ---                  | ---                                                                                                                     |
+| **Données de test**  | Produit : Salmon Bowl Quantité : 2                                                                                      |
+| ---                  | ---                                                                                                                     |
+| **Étapes**           | 1. Aller sur la page menu de Tokyo Bowl2. Modifier la quantité de « Salmon Bowl » à 2 3. Cliquer sur « Ajouter »        |
+| ---                  | ---                                                                                                                     |
+| **Résultat attendu** | Le produit est ajouté au panier avec une quantité de 2                                                                  |
+| ---                  | ---                                                                                                                     |
+| **Résultat obtenu**  | Le produit est bien mis au panier et passe ensuite en rupture de stock                                                  |
+| ---                  | ---                                                                                                                     |
+| **Statut**           | **Pass**                                                                                                                |
+
+ 4. Tentative de dépassement du stock disponible
+
+| Champ                | Contenu                                                                                                                 |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| **ID**               | TC-LOGIN-016                                                                                                            |
+| ---                  | ---                                                                                                                     |
+| **Titre**            | Refus d'ajout d'une quantité supérieure au stock disponible                                                             |
+| ---                  | ---                                                                                                                     |
+| **Objectif**         | Vérifier que le système refuse une quantité supérieure au stock restant                                                 |
+| ---                  | ---                                                                                                                     |
+| **Préconditions**    | Le produit « Salmon Bowl » affiche un stock de 0                                                                        |
+| ---                  | ---                                                                                                                     |
+| **Données de test**  | Produit : Salmon Bowl Quantité : 3                                                                                      |
+| ---                  | ---                                                                                                                     |
+| **Étapes**           | 1. Aller sur la page menu de Tokyo Bowl2. Modifier la quantité de « Salmon Bowl » à 3 3. Cliquer sur « Ajouter »        |
+| ---                  | ---                                                                                                                     |
+| **Résultat attendu** | Le système refuse l'ajout et ne met rien au panier                                                                      |
+| ---                  | ---                                                                                                                     |
+| **Résultat obtenu**  | Le produit est bien mis au panier et peut même être commandé                                                            |
+| ---                  | ---                                                                                                                     |
+| **Statut**           | **Fail**                                                                                                                |
+| ---                  | ---                                                                                                                     |
+| **Principal risque** | Survente et commande d'une quantité supérieure au stock disponible                                                      |
+
+ 5. Commande avec un montant inférieur au minimum requis
+
+| Champ                | Contenu                                                                                                              |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| **ID**               | TC-LOGIN-017                                                                                                         |
+| ---                  | ---                                                                                                                  |
+| **Titre**            | Refus d'une commande dont le montant est inférieur au minimum requis                                                 |
+| ---                  | ---                                                                                                                  |
+| **Objectif**         | Vérifier que le système refuse une commande dont le total est inférieur au minimum requis.                           |
+| ---                  | ---                                                                                                                  |
+| **Préconditions**    | Frite Maison affiche « minimum 20 € » ; des produits permettent d'atteindre un total juste sous ce montant           |
+| ---                  | ---                                                                                                                  |
+| **Données de test**  | Produits combinés pour un total de 7 €                                                                               |
+| ---                  | ---                                                                                                                  |
+| **Étapes**           | 1. Ajouter des produits dans le panier2. Aller à la commande 3. Tenter de valider la commande                        |
+| ---                  | ---                                                                                                                  |
+| **Résultat attendu** | La validation est refusée et un message indique le montant minimum requis                                            |
+| ---                  | ---                                                                                                                  |
+| **Résultat obtenu**  | La commande a été prise en compte                                                                                    |
+| ---                  | ---                                                                                                                  |
+| **Statut**           | **Fail**                                                                                                             |
+| ---                  | ---                                                                                                                  |
+| **Principal risque** | Validation de commandes ne respectant pas le montant minimum imposé par le restaurant                                |
+
+ 6. Ajout d'une quantité très élevée au panier
+
+| Champ                | Contenu                                                                                                                          |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| **ID**               | TC-LOGIN-018                                                                                                                     |
+| ---                  | ---                                                                                                                              |
+| **Titre**            | Comportement du système face à une quantité extrêmement élevée dans le champ quantité                                            |
+| ---                  | ---                                                                                                                              |
+| **Objectif**         | Vérifier que le système gère correctement une quantité très grande sans planter ni accepter une valeur dépassant le stock réel   |
+| ---                  | ---                                                                                                                              |
+| **Préconditions**    | Le produit « Thé à la menthe » affiche un stock de 98                                                                            |
+| ---                  | ---                                                                                                                              |
+| **Données de test**  | Produit : Thé à la menthe Quantité : 99                                                                                          |
+| ---                  | ---                                                                                                                              |
+| **Étapes**           | 1. Aller sur la page menu de Couscous Atlas2. Modifier la quantité de « Thé à la menthe » à 99 3. Cliquer sur « Ajouter »        |
+| ---                  | ---                                                                                                                              |
+| **Résultat attendu** | Le système refuse ou plafonne automatiquement la quantité au stock disponible (98)                                               |
+| ---                  | ---                                                                                                                              |
+| **Résultat obtenu**  | La quantité a été acceptée et la commande a même été prise en compte                                                             |
+| ---                  | ---                                                                                                                              |
+| **Statut**           | **Fail**                                                                                                                         |
+| ---                  | ---                                                                                                                              |
+| **Principal risque** | Survente et dépassement du stock disponible, avec risque de commande impossible à honorer                                        |
+
+# Cas règles métier
+
+ 1. Le stock diminue après une commande validée
+
+| Champ                | Contenu                                                                                                                                                                             |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **ID**               | TC-LOGIN-019                                                                                                                                                                        |
+| ---                  | ---                                                                                                                                                                                 |
+| **Titre**            | Le stock d'un produit diminue après validation d'une commande                                                                                                                       |
+| ---                  | ---                                                                                                                                                                                 |
+| **Objectif**         | Vérifier que la règle métier de gestion du stock est respectée : commander un produit réduit son stock disponible                                                                   |
+| ---                  | ---                                                                                                                                                                                 |
+| **Préconditions**    | L'utilisateur est connecté ; un produit a un stock connu (ex. Tofu Bowl, stock : 100)                                                                                               |
+| ---                  | ---                                                                                                                                                                                 |
+| **Données de test**  | Produit : Tofu Bowl / Quantité : 1                                                                                                                                                  |
+| ---                  | ---                                                                                                                                                                                 |
+| **Étapes**           | 1. Noter le stock actuel de « Tofu Bowl » (ex. 100)2. Ajouter 1 unité au panier3. Valider la commande4. Retourner sur la page menu et vérifier le nouveau stock affiché             |
+| ---                  | ---                                                                                                                                                                                 |
+| **Résultat attendu** | Le stock affiché passe de 100 à 99 après la commande validée                                                                                                                        |
+| ---                  | ---                                                                                                                                                                                 |
+| **Résultat obtenu**  | Le stock diminue bien                                                                                                                                                               |
+| ---                  | ---                                                                                                                                                                                 |
+| **Statut**           | **Pass**                                                                                                                                                                            |
+
+ 2. Les coupons sont bien pris en compte
+
+| Champ                | Contenu                                                                                                                                                                         |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **ID**               | TC-LOGIN-020                                                                                                                                                                    |
+| ---                  | ---                                                                                                                                                                             |
+| **Titre**            | Vérification que le code ATLAS15 applique bien -15 % sur une commande chez Couscous Atlas                                                                                       |
+| ---                  | ---                                                                                                                                                                             |
+| **Objectif**         | Vérifier que la promotion annoncée en page d'accueil (« Code ATLAS15 -15 % ») est réellement appliquée au moment du paiement, et pas seulement affichée                         |
+| ---                  | ---                                                                                                                                                                             |
+| **Préconditions**    | L'utilisateur est connecté ; le restaurant Couscous Atlas annonce le code ATLAS15                                                                                               |
+| ---                  | ---                                                                                                                                                                             |
+| **Données de test**  | Code promo : ATLAS15 / Panier avec un total connu (ex. 20,00 €)                                                                                                                 |
+| ---                  | ---                                                                                                                                                                             |
+| **Étapes**           | 1. Ajouter des produits de Couscous Atlas pour un total de 20,00 €2. Aller au checkout3. Saisir le code ATLAS154. Appliquer le code5. Observer le nouveau total                 |
+| ---                  | ---                                                                                                                                                                             |
+| **Résultat attendu** | Une réduction de 15 % est appliquée, soit 4,875 € sur 32,50 €.                                                                                                                     |
+| ---                  | ---                                                                                                                                                                             |
+| **Résultat obtenu**  | Le coupon est accepté, mais l'API applique seulement une réduction de 10 %, soit 3,25 €.                                                                                                                                      |
+| ---                  | ---                                                                                                                                                                             |
+| **Statut**           | **Fail**                                                                                                                                                                        |
+
+ 3. Le minimum de commande par restaurant est respecté
+
+| Champ                | Contenu                                                                                                                        |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| **ID**               | TC-LOGIN-021                                                                                                                   |
+| ---                  | ---                                                                                                                            |
+| **Titre**            | Refus du checkout si le total est inférieur au minimum de commande du restaurant                                               |
+| ---                  | ---                                                                                                                            |
+| **Objectif**         | Vérifier que la règle métier du minimum de commande est appliquée et empêche la validation en dessous de ce seuil              |
+| ---                  | ---                                                                                                                            |
+| **Préconditions**    | L'utilisateur est connecté ; Burger Factory affiche « Minimum 20,00 € »                                                        |
+| ---                  | ---                                                                                                                            |
+| **Données de test**  | Panier avec un total de 10,00 € chez Burger Factory                                                                            |
+| ---                  | ---                                                                                                                            |
+| **Étapes**           | 1. Ajouter un produit pour un total de 10,00 € chez Burger Factory2. Aller au checkout3. Tenter de valider la commande         |
+| ---                  | ---                                                                                                                            |
+| **Résultat attendu** | La validation est refusée et un message indique le montant minimum requis                                                      |
+| ---                  | ---                                                                                                                            |
+| **Résultat obtenu**  | La commande a été prise en compte et passée                                                                                    |
+| ---                  | ---                                                                                                                            |
+| **Statut**           | **Fail**                                                                                                                       |
+| ---                  | ---                                                                                                                            |
+| **Principal risque** | Validation de commandes ne respectant pas les conditions commerciales du restaurant                                            |
+
+ 4. Un restaurant fermé ne peut pas recevoir de commande
+
+| Champ                | Contenu                                                                                                                           |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| **ID**               | TC-LOGIN-022                                                                                                                      |
+| ---                  | ---                                                                                                                               |
+| **Titre**            | Impossibilité de commander chez un restaurant affiché comme fermé                                                                 |
+| ---                  | ---                                                                                                                               |
+| **Objectif**         | Vérifier que la règle métier empêche toute commande sur un restaurant dont le statut est « fermé »                                |
+| ---                  | ---                                                                                                                               |
+| **Préconditions**    | Un restaurant existe avec le statut « FERMÉ »                                                                                     |
+| ---                  | ---                                                                                                                               |
+| **Données de test**  | Restaurant fermé                                                                                                                  |
+| ---                  | ---                                                                                                                               |
+| **Étapes**           | 1. Identifier un restaurant avec le badge « FERMÉ »2. Tenter d'accéder à son menu 3. Tenter d'ajouter un produit au panier        |
+| ---                  | ---                                                                                                                               |
+| **Résultat attendu** | Soit le menu n'est pas accessible, soit les boutons « Ajouter » sont désactivés                                                   |
+| ---                  | ---                                                                                                                               |
+| **Résultat obtenu**  | La commande a été prise en compte et passée                                                                                       |
+| ---                  | ---                                                                                                                               |
+| **Statut**           | **Fail**                                                                                                                          |
+| ---                  | ---                                                                                                                               |
+| **Principal risque** | Commandes passées auprès d'un restaurant fermé et potentiellement impossibles à honorer                                           |
+
+ 5. Impossible de mélanger des produits de deux restaurants différents dans une même commande
+
+| Champ                | Contenu                                                                                                                                                    |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **ID**               | TC-LOGIN-023                                                                                                                                               |
+| ---                  | ---                                                                                                                                                        |
+| **Titre**            | Le panier ne doit contenir des produits que d'un seul restaurant à la fois                                                                                 |
+| ---                  | ---                                                                                                                                                        |
+| **Objectif**         | Vérifier que la règle métier empêche de commander simultanément chez deux restaurants différents dans un même panier                                       |
+| ---                  | ---                                                                                                                                                        |
+| **Préconditions**    | Le panier contient déjà un produit d'un premier restaurant                                                                                                 |
+| ---                  | ---                                                                                                                                                        |
+| **Données de test**  | Produit 1 : un plat de Tokyo Bowl (déjà dans le panier) / Produit 2 : un plat de Burger Factory                                                            |
+| ---                  | ---                                                                                                                                                        |
+| **Étapes**           | 1. Ajouter un produit de Tokyo Bowl au panier2. Aller sur la page de Burger Factory3. Tenter d'ajouter un produit de Burger Factory au même panier         |
+| ---                  | ---                                                                                                                                                        |
+| **Résultat attendu** | Le système refuse l'ajout                                                                                                                                  |
+| ---                  | ---                                                                                                                                                        |
+| **Résultat obtenu**  | Le système refuse l'ajout                                                                                                                                  |
+| ---                  | ---                                                                                                                                                        |
+| **Statut**           | **Pass**                                                                                                                                                   |
+
+ 6. Le prix affiché sur le menu correspond au prix facturé au checkout
+
+| Champ                | Contenu                                                                                                                                                      |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **ID**               | TC-LOGIN-024                                                                                                                                                 |
+| ---                  | ---                                                                                                                                                          |
+| **Titre**            | Cohérence entre le prix unitaire affiché sur le menu et le prix réellement facturé                                                                           |
+| ---                  | ---                                                                                                                                                          |
+| **Objectif**         | Vérifier que le prix d'un produit ne change pas entre son affichage sur le menu et sa facturation finale au checkout                                         |
+| ---                  | ---                                                                                                                                                          |
+| **Préconditions**    | L'utilisateur est connecté ; un produit a un prix affiché clairement                                                                                         |
+| ---                  | ---                                                                                                                                                          |
+| **Données de test**  | Produit : Chicken Teriyaki / Prix affiché : 13,50 € / Quantité : 2                                                                                           |
+| ---                  | ---                                                                                                                                                          |
+| **Étapes**           | 1. Noter le prix unitaire affiché (13,50 €)2. Ajouter 2 unités au panier3. Aller au checkout4. Vérifier le sous-total correspondant à ce produit             |
+| ---                  | ---                                                                                                                                                          |
+| **Résultat attendu** | Le sous-total affiché est exactement de 27,00 € (13,50 € × 2)                                                                                                |
+| ---                  | ---                                                                                                                                                          |
+| **Résultat obtenu**  | Le système ne plante pas et affiche le bon résultat                                                                                                          |
+| ---                  | ---                                                                                                                                                          |
+| **Statut**           | **Pass**                                                                                                                                                     |
